@@ -122,3 +122,60 @@ else:
                 index_.append(x["unique_id"])
                 new_d.append(x)
         return new_d
+   if st.session_state["screen_size_Dashboard"]["screen"]["width"] >= 1490:
+        st.session_state["filter_dashboard"] = [3,1,1]
+        st.session_state["filter_options_"] = [3,1]
+        st.session_state["filter_options_radio"] = None
+        st.session_state["filter_options_select"] = None
+        st.session_state["tablet_mobile_sx"] = None
+        st.session_state["mobile_sx"] = None
+    elif st.session_state["screen_size_Dashboard"]["screen"]["width"] in range(1025, 1490):
+        st.session_state["filter_dashboard"] = [3,0.5,1.5]
+        st.session_state["filter_options_"] = [4,2]
+        st.session_state["filter_options_radio"] = None
+        st.session_state["filter_options_select"] = None
+        st.session_state["tablet_mobile_sx"] = None
+        st.session_state["mobile_sx"] = None
+    elif st.session_state["screen_size_Dashboard"]["screen"]["width"] in range(951, 1025):
+    
+        st.session_state["filter_dashboard"] = [7,0.3,3]
+        st.session_state["filter_options_"] = [5,2]
+        st.session_state["filter_options_radio"] = None
+        st.session_state["filter_options_select"] = None
+        st.session_state["tablet_mobile_sx"] = None
+        st.session_state["mobile_sx"] = None
+    elif st.session_state["screen_size_Dashboard"]["screen"]["width"] in range(769, 951):
+        st.session_state["filter_dashboard"] = [7,0.3,4.5]
+        st.session_state["filter_options_"] = 1 #[5,2]
+        st.session_state["filter_options_radio"] = 0
+        st.session_state["tablet_mobile_sx"] = None
+        st.session_state["mobile_sx"] = None
+    elif st.session_state["screen_size_Dashboard"]["screen"]["width"] <= 768:
+        st.session_state["filter_dashboard"] = 1
+        st.session_state["filter_options_"] = None
+        st.session_state["tablet_mobile_sx"] = None
+        st.session_state["mobile_sx"] = 1
+    
+    dashboard_cols = st.columns(st.session_state["filter_dashboard"])
+    with dashboard_cols[0].form("filter_form"):
+        if st.session_state["mobile_sx"] == None and st.session_state["tablet_mobile_sx"] == None:
+            filter_components = st.columns(st.session_state["filter_options_"])
+            if st.session_state["filter_options_radio"] == None:
+                filter_components[0].multiselect("Effects",[], key="effects_sort")
+                filter_components[1].radio("Order", ["top", "least"], horizontal=True, key="effects_sort_hierachy")
+            else:
+                filter_components[0].multiselect("Effects", [], key="effects_sort")
+                filter_components[st.session_state["filter_options_radio"]].radio("Order", ["top", "least"], horizontal=True, key="effects_sort_hierachy") 
+        elif st.session_state["tablet_mobile_sx"] != None:
+            filter_select = st.columns(1)
+            order_search = st.columns(st.session_state["tablet_mobile_sx"])
+            filter_select[0].multiselect("Effects", [], key="effects_sort")
+            order_search[0].radio("Order", ["top", "least"], horizontal=True, key="effects_sort_hierachy")
+            order_search[1].text_input("Search Dashboard", placeholder="Card name", key="search_dashboard_input")
+        elif st.session_state["mobile_sx"] != None:
+            mobile_sx_filter = st.columns(st.session_state["mobile_sx"])
+            mobile_sx_filter[0].text_input("Search Dashboard", placeholder="Card name", key="search_dashboard_input")
+            mobile_sx_filter[0].multiselect("Effects", [], key="effects_sort")
+            mobile_sx_filter[0].radio("Order", ["top", "least"], horizontal=True, key="effects_sort_hierachy")
+            
+        st.form_submit_button("Submit", on_click=check_status_of_filter_form)
