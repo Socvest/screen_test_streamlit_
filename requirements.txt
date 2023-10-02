@@ -1,1 +1,2 @@
-streamlit-screen-stats==0.0.3
+streamlit-screen-stats==0.0.6
+Sidebar-nav-custom-icons-streamlit==0.0.7
