@@ -178,4 +178,4 @@ else:
             mobile_sx_filter[0].multiselect("Effects", [], key="effects_sort")
             mobile_sx_filter[0].radio("Order", ["top", "least"], horizontal=True, key="effects_sort_hierachy")
             
-        st.form_submit_button("Submit", on_click=check_status_of_filter_form)
+        st.form_submit_button("Submit") #, on_click=check_status_of_filter_form)
