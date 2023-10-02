@@ -18,11 +18,11 @@ js = f"""
             """
 st.components.v1.html(js, height=0, width=0)
 
-st.write(st_screen_data())
+# st.write(st_screen_data())
 
 screen_size_Dashboard = st_screen_data(key="screen_size_Dashboard")
-with st.spinner("loading..."):
-    time.sleep(2)
+# with st.spinner("loading..."):
+#     time.sleep(2)
     # if screen_size_Dashboard == None:
     #     st.markdown("""
     #                     <meta http-equiv="refresh" content="0; URL=http://localhost:8501" />
