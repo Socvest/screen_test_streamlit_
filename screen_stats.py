@@ -1,3 +1,4 @@
+import time
 import streamlit as st
 from st_screen_stats import st_screen_data
 from custom_sidebar_icons import Set_Nav_Emojis as set_Nav
@@ -21,6 +22,7 @@ st.components.v1.html(js, height=0, width=0)
 # st.write(st_screen_data())
 
 screen_size_Dashboard = st_screen_data(key="screen_size_Dashboard")
+time.sleep(1.5)
 # with st.spinner("loading..."):
 #     time.sleep(2)
     # if screen_size_Dashboard == None:
