@@ -122,7 +122,7 @@ else:
                 index_.append(x["unique_id"])
                 new_d.append(x)
         return new_d
-   if st.session_state["screen_size_Dashboard"]["screen"]["width"] >= 1490:
+    if st.session_state["screen_size_Dashboard"]["screen"]["width"] >= 1490:
         st.session_state["filter_dashboard"] = [3,1,1]
         st.session_state["filter_options_"] = [3,1]
         st.session_state["filter_options_radio"] = None
